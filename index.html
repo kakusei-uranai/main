@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四柱推命鑑定士 覚醒 | 本来のあなたの姿を呼び覚ます</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* ===== Utilities ===== */
+        .font-elegant { font-family: 'Bodoni Moda', serif; }
+        .text-gold-gradient {
+            background: linear-gradient(to right, #fde68a, #d4af37, #fde68a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .border-gold { border: 1px solid rgba(212, 175, 55, 0.3); }
+        .border-gold:hover { border-color: rgba(212, 175, 55, 1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        ::selection { background: #713f12; color: #fff; }
+
+        /* ===== Navigation ===== */
+        .nav {
+            position: fixed; width: 100%; z-index: 50;
+            padding: 16px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        .nav-logo { font-size: 20px; font-weight: 700; letter-spacing: 0.15em; }
+        .nav-links { display: none; gap: 32px; font-size: 13px; letter-spacing: 0.15em; }
+        .nav-links a:hover { color: #facc15; }
+        .nav-cta {
+            background: #ca8a04; color: #fff;
+            font-size: 10px; padding: 8px 16px;
+            border-radius: 9999px; letter-spacing: 0.05em;
+        }
+        .nav-cta:hover { background: #eab308; }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative; height: 100vh; display: flex;
+            align-items: center; justify-content: center; overflow: hidden;
+        }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(15,23,42,0.5) 50%, #0f172a 100%);
+        }
+        .hero-content { position: relative; z-index: 10; text-align: center; padding: 0 16px; max-width: 800px; margin: 0 auto; }
+        .hero-sub { font-style: italic; color: #eab308; letter-spacing: 0.3em; margin-bottom: 16px; font-size: 14px; }
+        .hero-title { font-size: 28px; font-weight: 700; line-height: 1.4; margin-bottom: 32px; }
+        .hero-desc { font-size: 16px; color: #cbd5e1; margin-bottom: 40px; }
+        .hero-btn {
+            display: inline-block; padding: 16px 48px; border-radius: 9999px;
+            font-weight: 700; letter-spacing: 0.2em;
+        }
+        .hero-btn:hover { background: #ca8a04; -webkit-text-fill-color: #fff; }
+        .hero-scroll {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            width: 1px; height: 48px; opacity: 0.5;
+            background: linear-gradient(to bottom, #eab308, transparent);
+        }
+
+        /* ===== Section Commons ===== */
+        .section { padding: 80px 24px; }
+        .section-lg { padding: 128px 24px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .container-sm { max-width: 700px; margin: 0 auto; }
+        .container-md { max-width: 900px; margin: 0 auto; }
+        .text-center { text-align: center; }
+
+        /* ===== Empathy ===== */
+        .empathy-title { font-size: 22px; margin-bottom: 48px; }
+        .empathy-list { color: #94a3b8; font-size: 16px; line-height: 2.2; }
+        .empathy-list p { margin-bottom: 16px; }
+        .empathy-quote {
+            color: #fff; font-size: 18px; font-style: italic;
+            font-weight: 600; margin-top: 48px;
+        }
+
+        /* ===== Open Chat CTA ===== */
+        .oc-section {
+            padding: 80px 24px;
+            background: rgba(15, 23, 42, 0.5);
+            border-top: 1px solid #1e293b;
+            border-bottom: 1px solid #1e293b;
+        }
+        .oc-box {
+            max-width: 800px; margin: 0 auto;
+            border-radius: 24px; padding: 32px;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .oc-box-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(to right, transparent, #eab308, transparent);
+        }
+        .oc-label { color: #eab308; letter-spacing: 0.2em; margin-bottom: 16px; font-size: 13px; }
+        .oc-title { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+        .oc-desc { color: #cbd5e1; margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; font-size: 14px; }
+        .oc-btn {
+            display: inline-block; background: #ca8a04; color: #fff;
+            padding: 16px 32px; border-radius: 9999px;
+            font-weight: 700; letter-spacing: 0.1em; font-size: 14px;
+        }
+        .oc-btn:hover { background: #a16207; }
+        .oc-note { font-size: 10px; color: #64748b; margin-top: 16px; }
+
+        /* ===== Profile ===== */
+        .profile-section { background: #fff; color: #1e293b; }
+        .profile-grid {
+            display: grid; gap: 48px; align-items: center;
+        }
+        .profile-img-wrap { position: relative; max-width: 400px; margin: 0 auto; }
+        .profile-img {
+            border-radius: 16px; width: 100%; aspect-ratio: 1/1;
+            object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .profile-badge {
+            position: absolute; bottom: -24px; right: -24px;
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 6px solid #fff; background: #f1f5f9;
+            display: flex; align-items: center; justify-content: center;
+            font-style: italic; font-size: 32px; color: #ca8a04;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .profile-label { font-size: 12px; letter-spacing: 0.4em; color: #ca8a04; margin-bottom: 16px; }
+        .profile-name { font-size: 32px; font-weight: 700; margin-bottom: 32px; }
+        .profile-text { line-height: 1.9; margin-bottom: 24px; font-size: 15px; }
+        .profile-quote {
+            border-left: 4px solid #ca8a04; padding-left: 24px;
+            font-style: italic; color: #64748b;
+        }
+
+        /* ===== Voice ===== */
+        .voice-label { font-size: 12px; letter-spacing: 0.4em; color: #eab308; margin-bottom: 16px; }
+        .voice-title { font-size: 22px; font-weight: 700; margin-bottom: 64px; }
+        .voice-grid { display: grid; gap: 24px; }
+        .voice-card {
+            border-radius: 24px; padding: 32px;
+        }
+        .voice-quote-mark { color: #eab308; font-size: 28px; margin-bottom: 16px; }
+        .voice-card-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+        .voice-card-text { color: #94a3b8; font-size: 13px; line-height: 1.9; margin-bottom: 24px; }
+        .voice-card-footer {
+            display: flex; align-items: center; gap: 12px;
+            border-top: 1px solid #1e293b; padding-top: 24px;
+        }
+        .voice-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(202, 138, 4, 0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: #eab308; font-size: 13px; font-weight: 700;
+        }
+        .voice-name { color: #eab308; font-weight: 700; font-size: 13px; }
+        .voice-meta { color: #64748b; font-size: 11px; }
+
+        /* ===== Menu ===== */
+        .menu-section { background: #0f172a; padding: 128px 24px; }
+        .menu-title { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+        .menu-divider { width: 96px; height: 3px; background: #ca8a04; margin: 0 auto 32px; }
+        .menu-badge {
+            display: inline-flex; align-items: center; gap: 12px;
+            border-radius: 16px; padding: 12px 20px; margin-bottom: 16px;
+        }
+        .menu-badge-icon { width: 20px; height: 20px; color: #eab308; flex-shrink: 0; }
+        .menu-badge-text { color: #cbd5e1; font-size: 12px; }
+        .menu-badge-text strong { color: #eab308; }
+        .menu-grid { display: grid; gap: 24px; margin-bottom: 64px; }
+        .menu-card {
+            background: #0f172a; padding: 32px; border-radius: 24px;
+            display: flex; flex-direction: column; position: relative; overflow: hidden;
+        }
+        .menu-card-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(to right, transparent, #eab308, transparent);
+        }
+        .menu-card-label { color: #eab308; font-size: 10px; letter-spacing: 0.3em; margin-bottom: 12px; min-height: 16px; }
+        .menu-card-name { font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+        .menu-card-price { color: #eab308; font-size: 28px; margin-bottom: 24px; }
+        .menu-card-price span { font-size: 13px; color: #64748b; letter-spacing: normal; }
+        .menu-card-list { color: #94a3b8; font-size: 13px; margin-bottom: 32px; flex: 1; }
+        .menu-card-list li { margin-bottom: 12px; }
+        .menu-card-list .note { color: #ca8a04; font-size: 11px; }
+        .menu-btn-primary {
+            display: block; text-align: center; background: #ca8a04; color: #fff;
+            padding: 12px; border-radius: 9999px; font-weight: 700;
+        }
+        .menu-btn-primary:hover { background: #a16207; }
+        .menu-btn-secondary {
+            display: block; text-align: center; padding: 12px;
+            border-radius: 9999px;
+        }
+        .menu-btn-secondary:hover { background: #ca8a04; color: #fff; }
+
+        /* ===== Notice ===== */
+        .notice-box {
+            background: rgba(202, 138, 4, 0.1);
+            border: 1px solid rgba(202, 138, 4, 0.3);
+            border-radius: 16px; padding: 24px 24px; text-align: center;
+            margin-bottom: 64px;
+        }
+        .notice-title { color: #eab308; font-weight: 700; font-size: 13px; letter-spacing: 0.15em; margin-bottom: 12px; }
+        .notice-text { color: #cbd5e1; font-size: 14px; line-height: 1.9; margin-bottom: 16px; }
+        .notice-text strong { color: #eab308; font-weight: 700; }
+        .notice-sub { color: #94a3b8; font-size: 12px; line-height: 1.9; margin-bottom: 20px; }
+        .notice-sub em { color: #fff; font-weight: 600; font-style: normal; }
+        .notice-btn {
+            display: inline-block; background: #ca8a04; color: #fff;
+            padding: 12px 32px; border-radius: 9999px;
+            font-weight: 700; font-size: 13px;
+        }
+        .notice-btn:hover { background: #a16207; }
+
+        /* ===== Flow ===== */
+        .flow-box { border-radius: 24px; padding: 32px; }
+        .flow-title { font-size: 20px; font-weight: 700; margin-bottom: 40px; text-align: center; }
+        .flow-grid { display: grid; gap: 32px; text-align: center; }
+        .flow-step-circle {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: rgba(202, 138, 4, 0.2);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px; color: #eab308; font-size: 22px; font-weight: 700;
+        }
+        .flow-step-name { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+        .flow-step-desc { color: #64748b; font-size: 12px; line-height: 1.7; }
+        .flow-footer {
+            margin-top: 40px; padding-top: 32px;
+            border-top: 1px solid #1e293b; text-align: center;
+        }
+        .flow-footer-text { color: #94a3b8; font-size: 13px; margin-bottom: 12px; }
+        .flow-footer-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #eab308; font-weight: 700; font-size: 13px;
+        }
+        .flow-footer-link:hover { color: #facc15; }
+        .flow-footer-link svg { width: 20px; height: 20px; }
+
+        /* ===== Final CTA ===== */
+        .final-cta { position: relative; overflow: hidden; padding: 128px 24px; text-align: center; }
+        .final-cta-bg { position: absolute; inset: 0; z-index: 0; }
+        .final-cta-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.2; }
+        .final-cta-content { position: relative; z-index: 10; max-width: 640px; margin: 0 auto; }
+        .final-cta-title { font-size: 24px; font-weight: 700; margin-bottom: 32px; }
+        .final-cta-desc { color: #cbd5e1; margin-bottom: 48px; line-height: 1.9; font-size: 14px; }
+        .final-cta-buttons { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+        .final-btn-primary {
+            background: #ca8a04; color: #fff; padding: 16px 40px;
+            border-radius: 9999px; font-weight: 700; font-size: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .final-btn-primary:hover { background: #a16207; }
+        .final-btn-secondary {
+            padding: 16px 40px; border-radius: 9999px;
+            font-weight: 700; font-size: 14px;
+        }
+        .final-btn-secondary:hover { background: rgba(30, 41, 59, 0.8); }
+        .final-cta-contact {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #94a3b8; font-size: 13px; margin-top: 32px;
+        }
+        .final-cta-contact:hover { color: #eab308; }
+        .final-cta-contact svg { width: 16px; height: 16px; }
+
+        /* ===== Footer ===== */
+        .footer {
+            padding: 48px 24px; border-top: 1px solid #1e293b; text-align: center;
+        }
+        .footer-logo { font-size: 24px; margin-bottom: 16px; }
+        .footer-link { color: #64748b; font-size: 12px; margin-bottom: 16px; display: block; }
+        .footer-link:hover { color: #eab308; }
+        .footer-copy { font-size: 11px; color: #64748b; letter-spacing: 0.15em; }
+
+        /* ===== LINE SVG icon ===== */
+        .line-icon { fill: currentColor; }
+
+        /* ===== Responsive: Tablet+ (768px) ===== */
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .nav-cta { font-size: 12px; letter-spacing: 0.15em; }
+            .hero-title { font-size: 52px; }
+            .hero-desc { font-size: 20px; }
+            .empathy-title { font-size: 28px; }
+            .oc-box { padding: 64px; }
+            .oc-title { font-size: 32px; }
+            .oc-btn { font-size: 16px; padding: 16px 40px; }
+            .profile-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+            .profile-name { font-size: 36px; }
+            .voice-title { font-size: 40px; }
+            .voice-grid { grid-template-columns: repeat(3, 1fr); }
+            .menu-title { font-size: 40px; }
+            .menu-badge { border-radius: 9999px; }
+            .menu-badge-text { font-size: 14px; }
+            .menu-grid { grid-template-columns: repeat(3, 1fr); }
+            .menu-card { padding: 40px; }
+            .notice-box { padding: 32px; }
+            .notice-text { font-size: 15px; }
+            .notice-sub { font-size: 13px; }
+            .flow-box { padding: 48px; }
+            .flow-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+            .flow-arrow { display: block; }
+            .final-cta-title { font-size: 40px; }
+            .final-cta-desc { font-size: 16px; }
+            .final-cta-buttons { flex-direction: row; }
+            .final-btn-primary, .final-btn-secondary { padding: 20px 48px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo text-gold-gradient font-elegant">KAKUSEI</div>
+        <div class="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#voice">VOICE</a>
+            <a href="#menu">MENU</a>
+        </div>
+        <a href="#oc" class="nav-cta">体験会に参加</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=1600&q=80" alt="Mystical Universe">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-sub font-elegant">Destiny Reading</p>
+            <h1 class="hero-title">命式を読み解けば、本来のあなたの姿がわかるの。</h1>
+            <p class="hero-desc">四柱推命鑑定士 覚醒 による本格鑑定</p>
+            <a href="#menu" class="hero-btn border-gold text-gold-gradient">鑑定を申し込む</a>
+        </div>
+        <div class="hero-scroll"></div>
+    </section>
+
+    <!-- Empathy Section -->
+    <section id="about" class="section-lg">
+        <div class="container-sm text-center">
+            <h2 class="empathy-title">独りで、抱えていませんか？</h2>
+            <div class="empathy-list">
+                <p>いつまで経っても縮まらない、夫婦の距離。</p>
+                <p>部屋の扉の向こう、わが子の沈黙。</p>
+                <p>このままでいいのかと、夜中にふと襲う将来への不安。</p>
+                <p class="empathy-quote">「あなたは、本当のあなたを生きていますか？」</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Chat CTA -->
+    <section id="oc" class="oc-section">
+        <div class="oc-box border-gold">
+            <div class="oc-box-line"></div>
+            <p class="oc-label">EASY EXPERIENCE</p>
+            <h2 class="oc-title">オープンチャット鑑定体験会</h2>
+            <p class="oc-desc">まずは気軽に雰囲気を知りたい方へ。匿名・無料で参加できるコミュニティにて、随時「鑑定体験会」を実施しています。</p>
+            <a href="https://line.me/ti/g2/wfKL9NKNjtqtmBxEWlff1m4iM6YVCFMKiwRGgA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer" class="oc-btn">無料で体験会に参加する</a>
+            <p class="oc-note">※LINEのオープンチャットが開きます</p>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="section-lg profile-section">
+        <div class="container profile-grid">
+            <div>
+                <div class="profile-img-wrap">
+                    <img src="https://www.genspark.ai/api/files/s/lqDaSU70" alt="鑑定士 覚醒" class="profile-img">
+                    <div class="profile-badge font-elegant">K</div>
+                </div>
+            </div>
+            <div>
+                <p class="profile-label">PROFILE</p>
+                <h3 class="profile-name">鑑定士「覚醒」</h3>
+                <p class="profile-text">
+                    対面鑑定歴25年。四柱推命という古代から伝わる統計学を用い、これまで数千人の「魂の設計図」を読み解いてきました。四半世紀にわたり、お客様と直接向き合い続けてきた経験が、私の鑑定の礎です。
+                </p>
+                <p class="profile-text">
+                    私が「覚醒」という名で活動するのは、占いは未来を当てるだけのものではなく、あなたの中に眠る本来の輝きを呼び覚ますためのスイッチだと信じているからです。25年間、目の前のお一人おひとりに全力で寄り添い続けてきたからこそ、見えるものがあります。
+                </p>
+                <div class="profile-quote">「霧が晴れる瞬間を、共に見届けましょう」</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Section -->
+    <section id="voice" class="section-lg">
+        <div class="container text-center">
+            <p class="voice-label">VOICE</p>
+            <h3 class="voice-title">お客様から届いた喜びの声</h3>
+        </div>
+        <div class="container">
+            <div class="voice-grid">
+                <!-- Voice 1 -->
+                <div class="voice-card border-gold">
+                    <div class="voice-quote-mark font-elegant">"</div>
+                    <h4 class="voice-card-title">四柱推命ってすごい！</h4>
+                    <p class="voice-card-text">
+                        正直、最初は半信半疑でした。でも先生に命式を見ていただいた瞬間、自分でも気づいていなかった本質をズバリ言い当てられて鳥肌が立ちました。「あなたは本来こういう人なんだよ」と言われた時、涙が止まらなくて。今は自分の強みを活かした働き方ができて、毎日が本当に充実しています。
+                    </p>
+                    <div class="voice-card-footer">
+                        <div class="voice-avatar">M</div>
+                        <div>
+                            <p class="voice-name">M.S さま</p>
+                            <p class="voice-meta">30代・女性｜本格個人鑑定</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Voice 2 -->
+                <div class="voice-card border-gold">
+                    <div class="voice-quote-mark font-elegant">"</div>
+                    <h4 class="voice-card-title">暗闇から抜け出すことができました</h4>
+                    <p class="voice-card-text">
+                        夫との関係、子供の不登校、仕事のストレス……何もかもが行き詰まっていた時に覚醒先生に出会いました。命式から「今は人生の転換期」だと教えていただき、焦る必要はないと気づけたんです。あの時のアドバイスがなければ、今も暗いトンネルの中にいたと思います。本当に感謝しています。
+                    </p>
+                    <div class="voice-card-footer">
+                        <div class="voice-avatar">Y</div>
+                        <div>
+                            <p class="voice-name">Y.K さま</p>
+                            <p class="voice-meta">40代・女性｜パートナー・家族鑑定</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Voice 3 -->
+                <div class="voice-card border-gold">
+                    <div class="voice-quote-mark font-elegant">"</div>
+                    <h4 class="voice-card-title">先生のアドバイスで離婚がスムーズに進みました</h4>
+                    <p class="voice-card-text">
+                        ずっと悩んでいた離婚問題。先生に夫婦の命式を見ていただいたことで「この関係は手放していい」と背中を押してもらえました。タイミングや伝え方のアドバイスも的確で、驚くほどスムーズに話が進んだんです。今は新しい人生を前向きに歩めています。もっと早く相談すればよかった。
+                    </p>
+                    <div class="voice-card-footer">
+                        <div class="voice-avatar">A</div>
+                        <div>
+                            <p class="voice-name">A.T さま</p>
+                            <p class="voice-meta">30代・女性｜本格個人鑑定</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 32px;">
+                <h2 class="menu-title">鑑定メニュー</h2>
+                <div class="menu-divider"></div>
+                <div class="menu-badge border-gold">
+                    <svg class="menu-badge-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <p class="menu-badge-text">すべて<strong>LINE文字のみ</strong>のやり取り　顔出し・声出し一切なし</p>
+                </div>
+            </div>
+
+            <!-- Menu Cards -->
+            <div class="menu-grid">
+                <!-- 本格個人鑑定 -->
+                <div class="menu-card border-gold">
+                    <div class="menu-card-line"></div>
+                    <p class="menu-card-label">POPULAR</p>
+                    <h4 class="menu-card-name">本格個人鑑定</h4>
+                    <p class="menu-card-price font-elegant">¥5,500 <span>(税込)</span></p>
+                    <ul class="menu-card-list">
+                        <li>・魂の設計図（命式）の読み解き</li>
+                        <li>・あなたの本質と強みの特定</li>
+                        <li>・現在の運気の流れとアドバイス</li>
+                        <li>・不登校などのお悩み相談にも対応</li>
+                        <li>・金運鑑定も含まれます</li>
+                    </ul>
+                    <a href="https://the-kakusei.stores.jp/items/6965da73717fd90e9f2934f0" target="_blank" rel="noopener noreferrer" class="menu-btn-primary">申し込む</a>
+                </div>
+                <!-- パートナー・家族鑑定 -->
+                <div class="menu-card border-gold">
+                    <p class="menu-card-label">&nbsp;</p>
+                    <h4 class="menu-card-name">パートナー・家族鑑定</h4>
+                    <p class="menu-card-price font-elegant">¥13,000 <span>(税込)</span></p>
+                    <ul class="menu-card-list">
+                        <li>・お二人以上の相性と宿命の読み解き</li>
+                        <li>・関係改善のための具体的アクション</li>
+                        <li>・不登校・家庭問題へのアプローチ</li>
+                        <li>・金運鑑定も含まれます</li>
+                    </ul>
+                    <a href="https://the-kakusei.stores.jp/items/6965dd829b0fd5174f7b970d" target="_blank" rel="noopener noreferrer" class="menu-btn-secondary border-gold">申し込む</a>
+                </div>
+                <!-- 金運鑑定 -->
+                <div class="menu-card border-gold">
+                    <p class="menu-card-label">EASY START</p>
+                    <h4 class="menu-card-name">金運鑑定</h4>
+                    <p class="menu-card-price font-elegant">¥2,000 <span>(税込)</span></p>
+                    <ul class="menu-card-list">
+                        <li>・あなたの金運の流れを鑑定</li>
+                        <li>・お金との向き合い方のアドバイス</li>
+                        <li>・まずは気軽に鑑定を試したい方に</li>
+                        <li class="note">※本格鑑定にも金運鑑定が含まれます</li>
+                    </ul>
+                    <a href="https://the-kakusei.stores.jp/items/69820f005597987c92ade462" target="_blank" rel="noopener noreferrer" class="menu-btn-secondary border-gold">申し込む</a>
+                </div>
+            </div>
+
+            <!-- Notice -->
+            <div class="notice-box">
+                <p class="notice-title">⚠ 募集時期について</p>
+                <p class="notice-text">
+                    鑑定の募集時期は<strong>不定期</strong>です。各メニューページの「再入荷お知らせ」にメールアドレスをご登録いただくと、募集開始時にメールが届きます。
+                </p>
+                <p class="notice-sub">
+                    ※メール通知にはタイムラグがあり、届いた時には受付終了の場合も。<br><em>確実に鑑定を受けたい方は、オープンチャットへのご参加がおすすめです。</em><br>募集開始をいち早くお知らせします。
+                </p>
+                <a href="https://line.me/ti/g2/wfKL9NKNjtqtmBxEWlff1m4iM6YVCFMKiwRGgA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer" class="notice-btn">オープンチャットに参加する</a>
+            </div>
+
+            <!-- Flow -->
+            <div class="flow-box border-gold">
+                <h3 class="flow-title">ご利用の流れ</h3>
+                <div class="flow-grid">
+                    <div>
+                        <div class="flow-step-circle font-elegant">1</div>
+                        <h5 class="flow-step-name">ショップで購入</h5>
+                        <p class="flow-step-desc">上記メニューの「申し込む」からSTORESでご購入ください</p>
+                    </div>
+                    <div>
+                        <div class="flow-step-circle font-elegant">2</div>
+                        <h5 class="flow-step-name">公式LINEを追加</h5>
+                        <p class="flow-step-desc">購入後、ショップサイトからQRコードをダウンロードして公式LINEを追加</p>
+                    </div>
+                    <div>
+                        <div class="flow-step-circle font-elegant">3</div>
+                        <h5 class="flow-step-name">相談内容を送信</h5>
+                        <p class="flow-step-desc">公式LINEからお悩み・相談内容をメッセージで送ってください</p>
+                    </div>
+                    <div>
+                        <div class="flow-step-circle font-elegant">4</div>
+                        <h5 class="flow-step-name">鑑定結果をお届け</h5>
+                        <p class="flow-step-desc">LINEの文字メッセージで丁寧に鑑定結果をお届けします</p>
+                    </div>
+                </div>
+                <div class="flow-footer">
+                    <p class="flow-footer-text">購入方法やQRコードが分からない場合はお気軽にどうぞ</p>
+                    <a href="https://lin.ee/OmWOHch" target="_blank" rel="noopener noreferrer" class="flow-footer-link">
+                        <svg class="line-icon" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                        問い合わせ用LINEはこちら
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-bg">
+            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1600&q=80" alt="Crystal Ball">
+        </div>
+        <div class="final-cta-content">
+            <h2 class="final-cta-title">もう、ひとりで悩まないで。</h2>
+            <p class="final-cta-desc">運命は、変えられないものではなく、知ることで「乗りこなす」ものです。</p>
+            <div class="final-cta-buttons">
+                <a href="#menu" class="final-btn-primary">本格鑑定を予約する</a>
+                <a href="#oc" class="final-btn-secondary border-gold text-gold-gradient">まずは無料体験会へ</a>
+            </div>
+            <a href="https://lin.ee/OmWOHch" target="_blank" rel="noopener noreferrer" class="final-cta-contact">
+                <svg class="line-icon" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                ご質問・お問い合わせはLINEから
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo text-gold-gradient font-elegant">KAKUSEI</div>
+        <a href="https://lin.ee/OmWOHch" target="_blank" rel="noopener noreferrer" class="footer-link">お問い合わせ LINE</a>
+        <p class="footer-copy">&copy; 2025 四柱推命鑑定士 覚醒. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
